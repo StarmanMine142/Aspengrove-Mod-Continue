@@ -1,0 +1,29 @@
+package starman.aspengrove;
+
+import net.fabricmc.api.ModInitializer;
+import starman.aspengrove.classes.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class AspenGrove implements ModInitializer {
+    public static final String MOD_ID = "aspengrove";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+    @Override
+    public void onInitialize() {
+        AspenGroveColors.initialize();
+        AspenGroveWoodTypes.initialize();
+        AspenGroveBlocks.initialize();
+        AspenGroveBlocks.registerFuels();
+        AspenGroveBlocks.registerStrippables();
+        AspenGroveBlocks.registerFlammables();
+        AspenGroveBlocks.registerCompostables();
+        AspenGroveEntities.initialize();
+        AspenGroveItems.initialize();
+        AspenGroveCreativeTab.initialize();
+        AspenGroveTreeGrowers.initialize();
+        AspenGroveBiomes.initialize();
+
+        LOGGER.info("Aspen Grove Initialized!");
+    }
+}

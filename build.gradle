@@ -1,0 +1,21 @@
+subprojects {
+    apply plugin: "java-library"
+    apply plugin: "idea"
+
+    group = "${mod_group}"
+
+    repositories {
+        mavenCentral()
+        maven {url = "https://maven.terraformersmc.com/" }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = "UTF-8"
+        options.release = 21
+    }
+
+    java {
+        toolchain.languageVersion = JavaLanguageVersion.of(21)
+        withSourcesJar()
+    }
+}
