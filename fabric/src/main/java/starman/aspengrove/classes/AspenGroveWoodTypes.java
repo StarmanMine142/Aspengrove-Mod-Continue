@@ -1,0 +1,11 @@
+package starman.aspengrove.classes;
+
+import net.minecraft.world.level.block.state.properties.*;
+
+public class AspenGroveWoodTypes {
+    public static final BlockSetType ASPEN_BLOCK_SET_TYPE = BlockSetType.register(new BlockSetType("aspengrove:aspen"));
+    public static final WoodType ASPEN = WoodType.register(new WoodType("aspengrove:aspen", ASPEN_BLOCK_SET_TYPE));
+
+    public static void initialize() {
+    }
+}
