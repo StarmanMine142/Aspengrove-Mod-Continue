@@ -6,7 +6,11 @@ base {
     archivesName = "${mod_id}"
 }
 
+<<<<<<< HEAD
 version = mod_version_fabric
+=======
+version = "${mod_version_fabric}-${minecraft_version}"
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 
 def resourceTargets = [
         "mod_id": mod_id,
@@ -17,7 +21,11 @@ def resourceTargets = [
         "minecraft_version": minecraft_version,
         "min_minecraft_version": min_minecraft_version,
         "fabric_loader_version": fabric_loader_version,
+<<<<<<< HEAD
         "min_fabric_loader_version": fabric_loader_version,
+=======
+        "min_fabric_loader_version": min_fabric_loader_version,
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
         "sources_link": sources_link,
         "issues_link": issues_link,
         "homepage_link": homepage_link,
@@ -44,5 +52,9 @@ dependencies {
     implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 
+<<<<<<< HEAD
     implementation "com.terraformersmc:biolith-fabric:${biolith_version}"
+=======
+//    implementation "com.terraformersmc:biolith-fabric:${biolith_version}"
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 }

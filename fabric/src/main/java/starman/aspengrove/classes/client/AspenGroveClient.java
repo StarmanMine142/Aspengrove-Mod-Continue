@@ -1,6 +1,7 @@
 package starman.aspengrove.classes.client;
 
 import starman.aspengrove.classes.*;
+<<<<<<< HEAD
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
@@ -14,6 +15,20 @@ import net.minecraft.resources.Identifier;
 
 import java.util.List;
 
+=======
+
+import java.util.List;
+
+import net.fabricmc.api.*;
+import net.fabricmc.fabric.api.client.rendering.v1.*;
+
+import net.minecraft.client.color.block.BlockTintSources;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.object.boat.BoatModel;
+import net.minecraft.resources.Identifier;
+
+@Environment(EnvType.CLIENT)
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 public class AspenGroveClient implements ClientModInitializer {
     public static final String MOD_ID = "aspengrove";
 
@@ -27,7 +42,11 @@ public class AspenGroveClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockColorRegistry.register(
+<<<<<<< HEAD
                 List.of(BlockTintSources.grass()),
+=======
+                List.of(BlockTintSources.foliage()),
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
                 AspenGroveBlocks.HONEYFLOWER
         );
 
@@ -41,6 +60,7 @@ public class AspenGroveClient implements ClientModInitializer {
         EntityRendererRegistry.register(AspenGroveEntities.ASPEN_CHEST_BOAT, context ->
                 new AspenBoatRenderer(context, ASPEN_CHEST_BOAT, "aspen", true)
         );
+<<<<<<< HEAD
 
         SpriteId signMaterial = new SpriteId(
                 Sheets.SIGN_SHEET,
@@ -54,5 +74,7 @@ public class AspenGroveClient implements ClientModInitializer {
 
         Sheets.SIGN_SPRITES.put(AspenGroveWoodTypes.ASPEN, signMaterial);
         Sheets.HANGING_SIGN_SPRITES.put(AspenGroveWoodTypes.ASPEN, hangingSignMaterial);
+=======
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
     }
 }

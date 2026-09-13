@@ -13,7 +13,11 @@
     },
     "has_the_recipe": {
       "conditions": {
+<<<<<<< HEAD
         "recipe": "aspengrove:rabbit_stew_from_orange_mushroom"
+=======
+        "recipes": "aspengrove:rabbit_stew_from_orange_mushroom"
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
       },
       "trigger": "minecraft:recipe_unlocked"
     }

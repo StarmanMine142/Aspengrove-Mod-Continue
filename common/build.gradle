@@ -6,8 +6,12 @@ base {
     archivesName = "${mod_id}"
 }
 
+<<<<<<< HEAD
 version = mod_version_common
 
 def resourceTargets = [
         "mod_version_common": mod_version_common
 ]
+=======
+version = mod_version_common
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59

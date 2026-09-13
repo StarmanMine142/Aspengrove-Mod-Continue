@@ -1,6 +1,7 @@
 package starman.aspengrove.classes;
 
 import starman.aspengrove.AspenGrove;
+<<<<<<< HEAD
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -15,6 +16,18 @@ import net.minecraft.world.item.Item;
 
 import java.util.function.Supplier;
 
+=======
+
+import java.util.function.Supplier;
+
+import net.minecraft.core.Registry;
+import net.minecraft.world.item.Item;
+import net.minecraft.core.registries.*;
+import net.minecraft.resources.*;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.vehicle.boat.*;
+
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 public class AspenGroveEntities {
     public static final EntityType<Boat> ASPEN_BOAT = register(
             "aspen_boat",

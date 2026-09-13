@@ -40,6 +40,15 @@ neoForge {
         from file("src/main/resources/META-INF/accesstransformer.cfg")
     }
 
+<<<<<<< HEAD
+=======
+    runs {
+        client {
+            client()
+        }
+    }
+
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
     mods {
         "${mod_id}" {
             sourceSet(sourceSets.main)
@@ -51,5 +60,9 @@ neoForge {
 dependencies {
     implementation project(":common")
 
+<<<<<<< HEAD
     implementation "com.terraformersmc:biolith-neoforge:${biolith_version}"
+=======
+//  implementation "com.terraformersmc:biolith-neoforge:${biolith_version}"
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 }

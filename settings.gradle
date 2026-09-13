@@ -8,4 +8,8 @@ pluginManagement {
 
 rootProject.name = "aspengrove"
 
+<<<<<<< HEAD
 include "common", "fabric", "neoforge"
+=======
+include "common", "fabric"//, "neoforge"
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59

@@ -35,5 +35,9 @@
     "item.aspengrove.bouquet": "Bouquet",
     "tag.item.aspengrove.aspen_logs": "Aspen Logs",
     "modmenu.descriptionTranslation.aspengrove": "Add new blocks and biome!",
+<<<<<<< HEAD
     "fml.menu.mods.info.description.aspengrove": "Add new blocks and biome!"
+=======
+    "neoforge.screen.mods.info.description.aspengrove": "Add new blocks and biome!"
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 }

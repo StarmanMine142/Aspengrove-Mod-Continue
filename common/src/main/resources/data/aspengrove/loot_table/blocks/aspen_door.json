@@ -2,6 +2,7 @@
     "type": "minecraft:block",
     "pools": [
         {
+<<<<<<< HEAD
             "bonus_rolls": 0.0,
             "conditions": [
                 {
@@ -20,6 +21,21 @@
                             }
                         }
                     ],
+=======
+            "condition": {
+                "type": "minecraft:survives_explosion"
+            },
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "condition": {
+                        "type": "minecraft:match_block",
+                        "blocks": "aspengrove:aspen_door",
+                        "state": {
+                            "half": "lower"
+                        }
+                    },
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
                     "name": "aspengrove:aspen_door"
                 }
             ],

@@ -35,5 +35,9 @@
     "item.aspengrove.bouquet": "Букет",
     "tag.item.aspengrove.aspen_logs": "Осиновые брёвна",
     "modmenu.descriptionTranslation.aspengrove": "Добавляет новые блоки и биом!",
+<<<<<<< HEAD
     "fml.menu.mods.info.description.aspengrove": "Добавляет новые блоки и биом!"
+=======
+    "neoforge.screen.mods.info.description.aspengrove": "Добавляет новые блоки и биом!"
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 }

@@ -13,7 +13,11 @@ public class AspenGroveBiomes {
             Identifier.fromNamespaceAndPath("aspengrove", "aspen_grove")
     );
 
+<<<<<<< HEAD
     public static void initialize() {
+=======
+    public static void registerBiomes() {
+>>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
         BiomePlacement.replaceOverworld(Biomes.FOREST, ASPEN_GROVE, 0.27);
         BiomePlacement.replaceOverworld(Biomes.BIRCH_FOREST, ASPEN_GROVE, 0.27);
         BiomePlacement.replaceOverworld(Biomes.TAIGA, ASPEN_GROVE, 0.27);
