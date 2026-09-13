@@ -8,12 +8,7 @@ version = "${mod_version}"
 displayName = "${mod_name}"
 description = "${mod_description}"
 authors = "StarmanMine142, dungeonerr"
-<<<<<<< HEAD
 logoFile = "assets/${mod_id}/icon.png"
-=======
-iconFile = "assets/${mod_id}/icon.png"
-bannerFile = "assets/${mod_id}/icon.png"
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 
 displayURL = "${homepage_link}"
 issueTrackerURL = "${issues_link}"

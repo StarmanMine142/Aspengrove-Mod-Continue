@@ -24,30 +24,14 @@
       "count": 96
     },
     {
-<<<<<<< HEAD
       "type": "minecraft:random_offset",
       "xz_spread": {
-=======
-      "type": "minecraft:offset",
-      "z": {
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
         "type": "minecraft:trapezoid",
         "max": 6,
         "min": -6,
         "plateau": 0
       },
-<<<<<<< HEAD
       "y_spread": {
-=======
-
-      "x": {
-        "type": "minecraft:trapezoid",
-        "max": 6,
-        "min": -6,
-        "plateau": 0
-      },
-      "y": {
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
         "type": "minecraft:trapezoid",
         "max": 2,
         "min": -2,

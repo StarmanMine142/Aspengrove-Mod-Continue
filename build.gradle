@@ -5,11 +5,7 @@ subprojects {
     group = "${mod_group}"
 
     repositories {
-<<<<<<< HEAD
-        maven { url = "https://maven.terraformersmc.com/" }
-=======
         maven {url = "https://maven.terraformersmc.com/" }
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
     }
 
     tasks.withType(JavaCompile).configureEach {

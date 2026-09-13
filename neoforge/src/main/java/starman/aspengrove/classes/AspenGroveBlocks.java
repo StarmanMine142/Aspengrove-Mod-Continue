@@ -5,11 +5,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.HangingSignItem;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.block.*;
-<<<<<<< HEAD
 import net.minecraft.world.level.block.entity.BlockEntityType;
-=======
 import net.minecraft.world.level.block.entity.*;
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -348,16 +345,9 @@ public class AspenGroveBlocks {
             }
             if (targetField == null) return;
             targetField.setAccessible(true);
-
-<<<<<<< HEAD
             updateBlockEntitySet(targetField, BlockEntityType.SIGN, ASPEN_SIGN.get(), ASPEN_WALL_SIGN.get());
             updateBlockEntitySet(targetField, BlockEntityType.HANGING_SIGN, ASPEN_HANGING_SIGN.get(), ASPEN_WALL_HANGING_SIGN.get());
             updateBlockEntitySet(targetField, BlockEntityType.SHELF, ASPEN_SHELF.get());
-=======
-            updateBlockEntitySet(targetField, BlockEntityTypes.SIGN, ASPEN_SIGN.get(), ASPEN_WALL_SIGN.get());
-            updateBlockEntitySet(targetField, BlockEntityTypes.HANGING_SIGN, ASPEN_HANGING_SIGN.get(), ASPEN_WALL_HANGING_SIGN.get());
-            updateBlockEntitySet(targetField, BlockEntityTypes.SHELF, ASPEN_SHELF.get());
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 
         } catch (Exception e) {
             e.printStackTrace();

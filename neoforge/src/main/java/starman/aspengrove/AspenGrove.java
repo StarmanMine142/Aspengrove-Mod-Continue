@@ -19,13 +19,9 @@ public class AspenGrove {
 
     public AspenGrove(IEventBus modEventBus) {
         AspenGroveBlocks.initialize(modEventBus);
-        AspenGroveEntities.init(modEventBus);
+        AspenGroveEntities.initialize(modEventBus);
         AspenGroveItems.initialize(modEventBus);
-<<<<<<< HEAD
         AspenGroveCreativeTab.initialize(modEventBus);
-=======
-        AspenGroveCreativeTab.init(modEventBus);
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
         AspenGroveColors.initialize();
         AspenGroveWoodTypes.initialize();
         AspenGroveTreeGrowers.initialize();
@@ -39,11 +35,7 @@ public class AspenGrove {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-<<<<<<< HEAD
-            AspenGroveBiomes.initialize();
-=======
             AspenGroveBiomes.registerBiomes();
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
             registerFlammability();
             AspenGroveBlocks.addToBlockEntityTypes();
             LOGGER.info("Aspen Grove Initialized!");

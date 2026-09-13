@@ -2,17 +2,13 @@
     "type": "minecraft:block",
     "pools": [
         {
-<<<<<<< HEAD
             "bonus_rolls": 0.0,
-=======
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
             "entries": [
                 {
                     "type": "minecraft:alternatives",
                     "children": [
                         {
                             "type": "minecraft:item",
-<<<<<<< HEAD
                             "conditions": [
                                 {
                                     "condition": "minecraft:match_tool",
@@ -30,48 +26,28 @@
                                     }
                                 }
                             ],
-=======
-                            "condition": "minecraft:tool/can_silk_touch",
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
                             "name": "aspengrove:orange_mushroom_block"
                         },
                         {
                             "type": "minecraft:item",
-<<<<<<< HEAD
                             "functions": [
                                 {
                                     "add": false,
-=======
-                            "modifier": [
-                                {
-                                    "type": "minecraft:set_count",
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
                                     "count": {
                                         "type": "minecraft:uniform",
                                         "max": 2.0,
                                         "min": -6.0
-<<<<<<< HEAD
                                     },
                                     "function": "minecraft:set_count"
                                 },
                                 {
                                     "function": "minecraft:limit_count",
-=======
-                                    }
-                                },
-                                {
-                                    "type": "minecraft:limit_count",
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
                                     "limit": {
                                         "min": 0.0
                                     }
                                 },
                                 {
-<<<<<<< HEAD
                                     "function": "minecraft:explosion_decay"
-=======
-                                    "type": "minecraft:explosion_decay"
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
                                 }
                             ],
                             "name": "aspengrove:orange_mushroom"

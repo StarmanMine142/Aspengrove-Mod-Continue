@@ -1,7 +1,6 @@
 package starman.aspengrove.classes.client;
 
 import starman.aspengrove.AspenGrove;
-<<<<<<< HEAD
 import starman.aspengrove.classes.*;
 import net.minecraft.client.color.block.BlockTintSources;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -29,17 +28,6 @@ public class AspenGroveClient {
         );
     }
 
-=======
-import starman.aspengrove.classes.AspenGroveEntities;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.object.boat.BoatModel;
-import net.minecraft.resources.Identifier;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-
-public class AspenGroveClient {
-
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
     public static final ModelLayerLocation ASPEN_BOAT_LAYER =
             new ModelLayerLocation(Identifier.fromNamespaceAndPath(AspenGrove.MOD_ID, "boat/aspen"), "main");
 
@@ -47,10 +35,7 @@ public class AspenGroveClient {
             new ModelLayerLocation(Identifier.fromNamespaceAndPath(AspenGrove.MOD_ID, "chest_boat/aspen"), "main");
 
     public AspenGroveClient(IEventBus modEventBus) {
-<<<<<<< HEAD
         modEventBus.addListener(this::onClientSetup);
-=======
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
         modEventBus.addListener(this::registerLayerDefinitions);
         modEventBus.addListener(this::registerRenderers);
     }
@@ -66,11 +51,7 @@ public class AspenGroveClient {
         event.registerEntityRenderer(AspenGroveEntities.ASPEN_CHEST_BOAT.get(),
                 context -> new AspenBoatRenderer(context, ASPEN_CHEST_BOAT_LAYER));
     }
-<<<<<<< HEAD
-
     public void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> Sheets.addWoodType(AspenGroveWoodTypes.ASPEN));
     }
-=======
->>>>>>> 098d3ae4f0b055d0f25c44ad42a7ad4718b18e59
 }
