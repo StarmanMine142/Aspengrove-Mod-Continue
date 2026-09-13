@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/template_wall_hanging_sign",
-  "textures": {
-    "all": "aspengrove:block/aspen_hanging_sign",
-    "particle": "aspengrove:block/stripped_aspen_log"
-  }
-}
