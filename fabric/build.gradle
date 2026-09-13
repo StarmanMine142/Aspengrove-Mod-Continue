@@ -1,0 +1,48 @@
+plugins {
+    id "net.fabricmc.fabric-loom" version "${loom_version}"
+}
+
+base {
+    archivesName = "${mod_id}"
+}
+
+version = mod_version_fabric
+
+def resourceTargets = [
+        "mod_id": mod_id,
+        "mod_name": mod_name,
+        "mod_version": mod_version,
+        "mod_description": mod_description,
+        "mod_license": mod_license,
+        "minecraft_version": minecraft_version,
+        "min_minecraft_version": min_minecraft_version,
+        "fabric_loader_version": fabric_loader_version,
+        "min_fabric_loader_version": min_fabric_loader_version,
+        "sources_link": sources_link,
+        "issues_link": issues_link,
+        "homepage_link": homepage_link,
+        "java_version": java_version,
+        "mod_version_fabric": mod_version_fabric
+]
+
+processResources {
+    inputs.properties(resourceTargets)
+
+    from project(":common").sourceSets.main.resources
+
+    filesMatching("fabric.mod.json") {
+        expand resourceTargets
+    }
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/${mod_id}.accesswidener")
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+
+    implementation "com.terraformersmc:biolith-fabric:${biolith_version}"
+}
