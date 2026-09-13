@@ -1,0 +1,39 @@
+{
+  "stats": {
+    "minecraft:dropped": {
+      "aspengrove:aspen_leaves": 2,
+      "aspengrove:orange_mushroom_block": 65,
+      "minecraft:stick": 2
+    },
+    "minecraft:custom": {
+      "minecraft:sprint_one_cm": 8141,
+      "minecraft:time_since_rest": 5217,
+      "minecraft:fall_one_cm": 550,
+      "minecraft:walk_one_cm": 2698,
+      "minecraft:total_world_time": 7202,
+      "minecraft:fly_one_cm": 29755,
+      "minecraft:sneak_time": 14,
+      "minecraft:play_time": 5217,
+      "minecraft:jump": 104,
+      "minecraft:time_since_death": 5217,
+      "minecraft:drop": 6
+    },
+    "minecraft:used": {
+      "minecraft:red_mushroom_block": 1,
+      "minecraft:mushroom_stem": 1,
+      "minecraft:brown_mushroom_block": 1,
+      "aspengrove:orange_mushroom_block": 2
+    },
+    "minecraft:picked_up": {
+      "aspengrove:orange_mushroom_block": 2,
+      "minecraft:red_mushroom": 2
+    },
+    "minecraft:mined": {
+      "minecraft:red_mushroom_block": 1,
+      "minecraft:brown_mushroom_block": 1,
+      "aspengrove:orange_mushroom_block": 2,
+      "minecraft:mushroom_stem": 1
+    }
+  },
+  "DataVersion": 5015
+}

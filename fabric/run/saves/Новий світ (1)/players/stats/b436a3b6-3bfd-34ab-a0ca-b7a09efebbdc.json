@@ -1,0 +1,37 @@
+{
+  "stats": {
+    "minecraft:used": {
+      "minecraft:diamond_axe": 2,
+      "aspengrove:aspen_boat": 1,
+      "aspengrove:aspen_shelf": 2,
+      "aspengrove:aspen_chest_boat": 3,
+      "aspengrove:aspen_log": 1,
+      "aspengrove:aspen_wood": 2
+    },
+    "minecraft:custom": {
+      "minecraft:sprint_one_cm": 3510,
+      "minecraft:time_since_rest": 2416,
+      "minecraft:fall_one_cm": 225,
+      "minecraft:walk_one_cm": 2704,
+      "minecraft:total_world_time": 2426,
+      "minecraft:fly_one_cm": 10389,
+      "minecraft:boat_one_cm": 822,
+      "minecraft:sneak_time": 12,
+      "minecraft:play_time": 2416,
+      "minecraft:jump": 44,
+      "minecraft:time_since_death": 2416,
+      "minecraft:drop": 4
+    },
+    "minecraft:picked_up": {
+      "aspengrove:aspen_boat": 1,
+      "aspengrove:aspen_chest_boat": 2
+    },
+    "minecraft:dropped": {
+      "aspengrove:aspen_wood": 64,
+      "aspengrove:aspen_log": 64,
+      "aspengrove:stripped_aspen_log": 1,
+      "aspengrove:stripped_aspen_wood": 1
+    }
+  },
+  "DataVersion": 5018
+}

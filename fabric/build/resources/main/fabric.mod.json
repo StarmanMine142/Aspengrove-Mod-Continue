@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "aspengrove",
+	"version": "2.2.0",
+	"name": "Aspen Grove",
+	"description": "Add new blocks and biome!",
+	"accessWidener": "aspengrove.accesswidener",
+	"authors": [
+		"Dungeonerr",
+		"StarmanMine142"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/aspengrove",
+		"sources": "https://github.com/dungeonerr/Aspen-grove",
+		"issues": "https://github.com/dungeonerr/Aspen-grove/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/aspengrove/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"dngnrr.aspengrove.AspenGrove"
+		],
+		"client": [
+			"dngnrr.aspengrove.classes.client.AspenGroveClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.0",
+		"minecraft": "~26.3-alpha.14",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

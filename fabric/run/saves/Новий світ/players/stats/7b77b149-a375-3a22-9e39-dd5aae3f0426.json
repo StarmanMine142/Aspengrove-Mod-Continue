@@ -1,0 +1,22 @@
+{
+  "stats": {
+    "minecraft:used": {
+      "minecraft:netherite_axe": 4,
+      "aspengrove:stripped_aspen_log": 3,
+      "aspengrove:aspen_log": 3,
+      "aspengrove:aspen_wood": 2
+    },
+    "minecraft:custom": {
+      "minecraft:sprint_one_cm": 2166,
+      "minecraft:time_since_rest": 650,
+      "minecraft:walk_one_cm": 1100,
+      "minecraft:total_world_time": 12569,
+      "minecraft:leave_game": 1,
+      "minecraft:fly_one_cm": 1725,
+      "minecraft:play_time": 650,
+      "minecraft:jump": 12,
+      "minecraft:time_since_death": 650
+    }
+  },
+  "DataVersion": 5015
+}

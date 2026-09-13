@@ -1,0 +1,1 @@
+/locate biome aspengrove:aspen_grove

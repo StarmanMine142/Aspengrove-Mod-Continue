@@ -1,0 +1,19 @@
+{
+  "stats": {
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 740,
+      "minecraft:walk_one_cm": 511,
+      "minecraft:total_world_time": 740,
+      "minecraft:fly_one_cm": 1416,
+      "minecraft:sneak_time": 21,
+      "minecraft:play_time": 740,
+      "minecraft:jump": 3,
+      "minecraft:time_since_death": 740
+    },
+    "minecraft:picked_up": {
+      "aspengrove:aspen_leaves": 1,
+      "minecraft:stick": 1
+    }
+  },
+  "DataVersion": 5015
+}
