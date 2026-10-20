@@ -1,0 +1,48 @@
+package starman.aspengrove.classes;
+
+import starman.aspengrove.AspenGrove;
+
+import java.util.function.Supplier;
+
+import net.minecraft.core.Registry;
+import net.minecraft.world.item.Item;
+import net.minecraft.core.registries.*;
+import net.minecraft.resources.*;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.vehicle.boat.*;
+
+public class AspenGroveEntities {
+    public static final EntityType<Boat> ASPEN_BOAT = register(
+            "aspen_boat",
+            EntityType.Builder.<Boat>of(boatFactory(() -> AspenGroveItems.ASPEN_BOAT), MobCategory.MISC)
+                    .sized(1.375F, 0.5625F)
+                    .eyeHeight(0.5625F)
+                    .clientTrackingRange(10)
+    );
+
+    public static final EntityType<ChestBoat> ASPEN_CHEST_BOAT = register(
+            "aspen_chest_boat",
+            EntityType.Builder.<ChestBoat>of(chestBoatFactory(() -> AspenGroveItems.ASPEN_CHEST_BOAT), MobCategory.MISC)
+                    .sized(1.375F, 0.5625F)
+                    .eyeHeight(0.5625F)
+                    .clientTrackingRange(10)
+    );
+
+    private static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {
+        Identifier id = Identifier.fromNamespaceAndPath(AspenGrove.MOD_ID, name);
+        ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, id);
+        EntityType<T> type = builder.build(key);
+        return Registry.register(BuiltInRegistries.ENTITY_TYPE, id, type);
+    }
+
+    private static EntityType.EntityFactory<Boat> boatFactory(Supplier<Item> droppedItem) {
+        return (type, world) -> new Boat(type, world, droppedItem);
+    }
+
+    private static EntityType.EntityFactory<ChestBoat> chestBoatFactory(Supplier<Item> droppedItem) {
+        return (type, world) -> new ChestBoat(type, world, droppedItem);
+    }
+
+    public static void initialize() {
+    }
+}

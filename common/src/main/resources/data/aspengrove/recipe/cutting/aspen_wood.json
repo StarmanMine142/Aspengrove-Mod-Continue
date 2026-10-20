@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "farmersdelight",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "farmersdelight"
+      ]
+    }
+  ],
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    "aspengrove:aspen_wood"
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 1,
+        "id": "aspengrove:stripped_aspen_wood"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "farmersdelight:tree_bark"
+      }
+    }
+  ],
+  "sound": "minecraft:item.axe.strip",
+  "tool": {
+    "fabric:type": "farmersdelight:item_ability",
+    "action": "axe_strip"
+  }
+}
