@@ -1,331 +1,287 @@
 package starman.aspengrove.classes;
 
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.HangingSignItem;
-import net.minecraft.world.item.SignItem;
-import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.*;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import starman.aspengrove.AspenGrove;
 
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.lang.reflect.Field;
-import java.util.Collections;
 import java.util.Set;
 
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.level.block.sounds.AmbientLeavesBlockSoundPlayer;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.resources.Identifier;
+import net.minecraft.core.registries.*;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.block.entity.*;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+@SuppressWarnings("null")
 public class AspenGroveBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(AspenGrove.MOD_ID);
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AspenGrove.MOD_ID);
 
     public static void initialize(IEventBus bus) {
         BLOCKS.register(bus);
-        ITEMS.register(bus);
+        bus.addListener(FMLCommonSetupEvent.class, e -> addToBlockEntityTypes());
     }
 
-    public static final DeferredBlock<RotatedPillarBlock> ASPEN_LOG = BLOCKS.registerBlock(
+    private static <B extends Block> DeferredBlock<B> register(String name, Function<BlockBehaviour.Properties, ? extends B> blockFactory, Supplier<BlockBehaviour.Properties> settings) {
+        ResourceKey<Block> blockKey = keyOfBlock(name);
+        return BLOCKS.registerBlock(name, blockFactory, () -> settings.get().setId(blockKey));
+    }
+
+    private static ResourceKey<Block> keyOfBlock(String name) {
+        return ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(AspenGrove.MOD_ID, name));
+    }
+
+    public static final DeferredBlock<RotatedPillarBlock> ASPEN_LOG = register(
             "aspen_log",
             RotatedPillarBlock::new,
-            p -> p
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.SAND)
                     .sound(SoundType.WOOD)
                     .strength(2.0F)
                     .ignitedByLava()
                     .instrument(NoteBlockInstrument.BASS)
     );
-    public static final DeferredItem<BlockItem> ASPEN_LOG_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_log", ASPEN_LOG);
 
-    public static final DeferredBlock<RotatedPillarBlock> STRIPPED_ASPEN_LOG = BLOCKS.registerBlock(
+    public static final DeferredBlock<RotatedPillarBlock> STRIPPED_ASPEN_LOG = register(
             "stripped_aspen_log",
             RotatedPillarBlock::new,
-            p -> p
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.SAND)
                     .sound(SoundType.WOOD)
                     .strength(2.0F)
                     .ignitedByLava()
                     .instrument(NoteBlockInstrument.BASS)
     );
-    public static final DeferredItem<BlockItem> STRIPPED_ASPEN_LOG_ITEM =
-            ITEMS.registerSimpleBlockItem("stripped_aspen_log", STRIPPED_ASPEN_LOG);
 
-    public static final DeferredBlock<RotatedPillarBlock> ASPEN_WOOD = BLOCKS.registerBlock(
+    public static final DeferredBlock<RotatedPillarBlock> ASPEN_WOOD = register(
             "aspen_wood",
             RotatedPillarBlock::new,
-            p -> p
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.SAND)
                     .sound(SoundType.WOOD)
                     .strength(2.0F)
                     .ignitedByLava()
                     .instrument(NoteBlockInstrument.BASS)
     );
-    public static final DeferredItem<BlockItem> ASPEN_WOOD_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_wood", ASPEN_WOOD);
 
-    public static final DeferredBlock<RotatedPillarBlock> STRIPPED_ASPEN_WOOD = BLOCKS.registerBlock(
+    public static final DeferredBlock<RotatedPillarBlock> STRIPPED_ASPEN_WOOD = register(
             "stripped_aspen_wood",
             RotatedPillarBlock::new,
-            p -> p
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(MapColor.SAND)
                     .sound(SoundType.WOOD)
                     .strength(2.0F)
                     .ignitedByLava()
                     .instrument(NoteBlockInstrument.BASS)
     );
-    public static final DeferredItem<BlockItem> STRIPPED_ASPEN_WOOD_ITEM =
-            ITEMS.registerSimpleBlockItem("stripped_aspen_wood", STRIPPED_ASPEN_WOOD);
 
-    public static final DeferredBlock<Block> ASPEN_PLANKS = BLOCKS.registerBlock(
+    public static final DeferredBlock<Block> ASPEN_PLANKS = register(
             "aspen_planks",
             Block::new,
-            p -> p
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(AspenGroveColors.ASPEN_PLANKS)
                     .sound(SoundType.WOOD)
                     .strength(2.0F)
                     .ignitedByLava()
                     .instrument(NoteBlockInstrument.BASS)
     );
-    public static final DeferredItem<BlockItem> ASPEN_PLANKS_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_planks", ASPEN_PLANKS);
 
-    public static final DeferredBlock<SlabBlock> ASPEN_SLAB = BLOCKS.registerBlock(
+    public static final DeferredBlock<SlabBlock> ASPEN_SLAB = register(
             "aspen_slab",
             SlabBlock::new,
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(ASPEN_PLANKS.get())
+            () -> BlockBehaviour.Properties
+                    .ofFullCopy(AspenGroveBlocks.ASPEN_PLANKS.get())
     );
-    public static final DeferredItem<BlockItem> ASPEN_SLAB_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_slab", ASPEN_SLAB);
 
-    public static final DeferredBlock<StairBlock> ASPEN_STAIRS = BLOCKS.registerBlock(
+    public static final DeferredBlock<StairBlock> ASPEN_STAIRS = register(
             "aspen_stairs",
-            (p) -> new StairBlock(ASPEN_PLANKS.get().defaultBlockState(), p),
-            p -> BlockBehaviour.Properties
+            (settings) -> new StairBlock(ASPEN_PLANKS.get().defaultBlockState(), settings),
+            () -> BlockBehaviour.Properties
                     .ofFullCopy(ASPEN_PLANKS.get())
     );
-    public static final DeferredItem<BlockItem> ASPEN_STAIRS_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_stairs", ASPEN_STAIRS);
 
-    public static final DeferredBlock<FenceBlock> ASPEN_FENCE = BLOCKS.registerBlock(
+    public static final DeferredBlock<FenceBlock> ASPEN_FENCE = register(
             "aspen_fence",
             FenceBlock::new,
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(ASPEN_PLANKS.get())
+            () -> BlockBehaviour.Properties
+                    .ofFullCopy(AspenGroveBlocks.ASPEN_PLANKS.get())
     );
-    public static final DeferredItem<BlockItem> ASPEN_FENCE_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_fence", ASPEN_FENCE);
 
-    public static final DeferredBlock<FenceGateBlock> ASPEN_FENCE_GATE = BLOCKS.registerBlock(
+    public static final DeferredBlock<FenceGateBlock> ASPEN_FENCE_GATE = register(
             "aspen_fence_gate",
-            (p) -> new FenceGateBlock(WoodType.OAK, p),
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(ASPEN_PLANKS.get())
+            (settings) -> new FenceGateBlock(WoodType.OAK, settings),
+            () -> BlockBehaviour.Properties
+                    .ofFullCopy(AspenGroveBlocks.ASPEN_PLANKS.get())
                     .noOcclusion()
     );
-    public static final DeferredItem<BlockItem> ASPEN_FENCE_GATE_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_fence_gate", ASPEN_FENCE_GATE);
 
-    public static final DeferredBlock<PressurePlateBlock> ASPEN_PRESSURE_PLATE = BLOCKS.registerBlock(
+    public static final DeferredBlock<PressurePlateBlock> ASPEN_PRESSURE_PLATE = register(
             "aspen_pressure_plate",
-            (p) -> new PressurePlateBlock(BlockSetType.OAK, p),
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(ASPEN_PLANKS.get())
+            (settings) -> new PressurePlateBlock(WoodType.OAK.setType(), settings),
+            () -> BlockBehaviour.Properties
+                    .ofFullCopy(AspenGroveBlocks.ASPEN_PLANKS.get())
                     .noCollision()
                     .strength(0.5f)
     );
-    public static final DeferredItem<BlockItem> ASPEN_PRESSURE_PLATE_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_pressure_plate", ASPEN_PRESSURE_PLATE);
 
-    public static final DeferredBlock<ButtonBlock> ASPEN_BUTTON = BLOCKS.registerBlock(
+    public static final DeferredBlock<ButtonBlock> ASPEN_BUTTON = register(
             "aspen_button",
-            (p) -> new ButtonBlock(BlockSetType.OAK, 30, p),
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(ASPEN_PLANKS.get())
+            (settings) -> new ButtonBlock(BlockSetType.OAK, 30, settings),
+            () -> BlockBehaviour.Properties
+                    .ofFullCopy(AspenGroveBlocks.ASPEN_PLANKS.get())
                     .noCollision()
                     .strength(0.5f)
     );
-    public static final DeferredItem<BlockItem> ASPEN_BUTTON_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_button", ASPEN_BUTTON);
 
-    public static final DeferredBlock<DoorBlock> ASPEN_DOOR = BLOCKS.registerBlock(
+    public static final DeferredBlock<DoorBlock> ASPEN_DOOR = register(
             "aspen_door",
-            (p) -> new DoorBlock(BlockSetType.OAK, p),
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(ASPEN_PLANKS.get())
-                    .isSuffocating((s, w, pos) -> false)
-                    .isViewBlocking((s, w, pos) -> false)
+            (settings) -> new DoorBlock(BlockSetType.OAK, settings),
+            () -> BlockBehaviour.Properties
+                    .ofFullCopy(AspenGroveBlocks.ASPEN_PLANKS.get())
+                    .isSuffocating((state, world, pos) -> false)
+                    .isViewBlocking((state, world, pos, aabb) -> false)
                     .noOcclusion()
     );
-    public static final DeferredItem<BlockItem> ASPEN_DOOR_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_door", ASPEN_DOOR);
 
-    public static final DeferredBlock<TrapDoorBlock> ASPEN_TRAPDOOR = BLOCKS.registerBlock(
+    public static final DeferredBlock<TrapDoorBlock> ASPEN_TRAPDOOR = register(
             "aspen_trapdoor",
-            (p) -> new TrapDoorBlock(BlockSetType.OAK, p),
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(ASPEN_PLANKS.get())
-                    .isSuffocating((s, w, pos) -> false)
-                    .isViewBlocking((s, w, pos) -> false)
+            (settings) -> new TrapDoorBlock(BlockSetType.OAK, settings),
+            () -> BlockBehaviour.Properties
+                    .ofFullCopy(AspenGroveBlocks.ASPEN_PLANKS.get())
+                    .isSuffocating((state, world, pos) -> false)
+                    .isViewBlocking((state, world, pos, aabb) -> false)
                     .noOcclusion()
     );
-    public static final DeferredItem<BlockItem> ASPEN_TRAPDOOR_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_trapdoor", ASPEN_TRAPDOOR);
 
-    public static final DeferredBlock<StandingSignBlock> ASPEN_SIGN = BLOCKS.registerBlock(
+    public static final DeferredBlock<StandingSignBlock> ASPEN_SIGN = BLOCKS.register(
             "aspen_sign",
-            (p) -> new StandingSignBlock(AspenGroveWoodTypes.ASPEN, p),
-            p -> BlockBehaviour.Properties
+            () -> new StandingSignBlock(AspenGroveWoodTypes.ASPEN, BlockBehaviour.Properties
                     .ofFullCopy(ASPEN_PLANKS.get())
+                    .setId(keyOfBlock("aspen_sign"))
                     .forceSolidOn()
                     .noCollision()
                     .strength(1.0F)
+            )
     );
 
-    public static final DeferredBlock<WallSignBlock> ASPEN_WALL_SIGN = BLOCKS.registerBlock(
+    public static final DeferredBlock<WallSignBlock> ASPEN_WALL_SIGN = BLOCKS.register(
             "aspen_wall_sign",
-            (p) -> new WallSignBlock(AspenGroveWoodTypes.ASPEN, p),
-            p -> BlockBehaviour.Properties
+            () -> new WallSignBlock(AspenGroveWoodTypes.ASPEN, BlockBehaviour.Properties
                     .ofFullCopy(ASPEN_PLANKS.get())
+                    .setId(keyOfBlock("aspen_wall_sign"))
                     .forceSolidOn()
                     .noCollision()
                     .strength(1.0F)
+            )
     );
 
-    public static final DeferredItem<SignItem> ASPEN_SIGN_ITEM = ITEMS.registerItem(
-            "aspen_sign",
-            (p) -> new SignItem(ASPEN_SIGN.get(), ASPEN_WALL_SIGN.get(), p),
-            p -> p
-                    .stacksTo(16)
-    );
-
-    public static final DeferredBlock<CeilingHangingSignBlock> ASPEN_HANGING_SIGN = BLOCKS.registerBlock(
+    public static final DeferredBlock<CeilingHangingSignBlock> ASPEN_HANGING_SIGN = BLOCKS.register(
             "aspen_hanging_sign",
-            (p) -> new CeilingHangingSignBlock(AspenGroveWoodTypes.ASPEN, p),
-            p -> BlockBehaviour.Properties
+            () -> new CeilingHangingSignBlock(AspenGroveWoodTypes.ASPEN, BlockBehaviour.Properties
                     .ofFullCopy(ASPEN_PLANKS.get())
+                    .setId(keyOfBlock("aspen_hanging_sign"))
                     .forceSolidOn()
                     .noCollision()
                     .strength(1.0F)
+            )
     );
 
-    public static final DeferredBlock<WallHangingSignBlock> ASPEN_WALL_HANGING_SIGN = BLOCKS.registerBlock(
+    public static final DeferredBlock<WallHangingSignBlock> ASPEN_WALL_HANGING_SIGN = BLOCKS.register(
             "aspen_wall_hanging_sign",
-            (p) -> new WallHangingSignBlock(AspenGroveWoodTypes.ASPEN, p),
-            p -> BlockBehaviour.Properties
+            () -> new WallHangingSignBlock(AspenGroveWoodTypes.ASPEN, BlockBehaviour.Properties
                     .ofFullCopy(ASPEN_PLANKS.get())
+                    .setId(keyOfBlock("aspen_wall_hanging_sign"))
                     .forceSolidOn()
                     .noCollision()
                     .strength(1.0F)
+            )
     );
 
-    public static final DeferredItem<HangingSignItem> ASPEN_HANGING_SIGN_ITEM = ITEMS.registerItem(
-            "aspen_hanging_sign",
-            (p) -> new HangingSignItem(ASPEN_HANGING_SIGN.get(), ASPEN_WALL_HANGING_SIGN.get(), p),
-            p -> p
-                    .stacksTo(16)
-    );
-
-    public static final DeferredBlock<ShelfBlock> ASPEN_SHELF = BLOCKS.registerBlock(
+    public static final DeferredBlock<ShelfBlock> ASPEN_SHELF = register(
             "aspen_shelf",
             ShelfBlock::new,
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(ASPEN_PLANKS.get())
+            () -> BlockBehaviour.Properties
+                    .ofFullCopy(AspenGroveBlocks.ASPEN_PLANKS.get())
                     .sound(SoundType.SHELF)
     );
-    public static final DeferredItem<BlockItem> ASPEN_SHELF_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_shelf", ASPEN_SHELF);
 
-    public static final DeferredBlock<AspenGroveLeavesBlock> ASPEN_LEAVES = BLOCKS.registerBlock(
+    public static final DeferredBlock<AspenGroveLeavesBlock> ASPEN_LEAVES = register(
             "aspen_leaves",
-            AspenGroveLeavesBlock::new,
-            p -> p
+            (properties) -> new AspenGroveLeavesBlock(AmbientLeavesBlockSoundPlayer.noAmbientSound(), properties),
+            () -> BlockBehaviour.Properties.of()
                     .mapColor(AspenGroveColors.ASPEN_LEAVES)
                     .sound(SoundType.GRASS)
                     .strength(0.2f)
-                    .isSuffocating((s,w,pos) -> false)
-                    .isViewBlocking((s,w,pos) -> false)
-                    .pushReaction(PushReaction.DESTROY)
+                    .isSuffocating((state, world, pos) -> false)
+                    .isViewBlocking((state, world, pos, aabb) -> false)
                     .noOcclusion()
                     .randomTicks()
                     .ignitedByLava()
     );
-    public static final DeferredItem<BlockItem> ASPEN_LEAVES_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_leaves", ASPEN_LEAVES);
 
-    public static final DeferredBlock<SaplingBlock> ASPEN_SAPLING = BLOCKS.registerBlock(
+    public static final DeferredBlock<SaplingBlock> ASPEN_SAPLING = register(
             "aspen_sapling",
-            (p) -> new SaplingBlock(AspenGroveTreeGrowers.ASPEN, p),
-            p -> p.mapColor(MapColor.PLANT)
+            (settings) -> new SaplingBlock(AspenGroveTreeGrowers.ASPEN, settings),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
                     .noCollision()
                     .randomTicks()
                     .instabreak()
                     .sound(SoundType.GRASS)
-                    .pushReaction(PushReaction.DESTROY)
                     .noOcclusion()
                     .ignitedByLava()
     );
-    public static final DeferredItem<BlockItem> ASPEN_SAPLING_ITEM =
-            ITEMS.registerSimpleBlockItem("aspen_sapling", ASPEN_SAPLING);
 
-    public static final DeferredBlock<FlowerPotBlock> POTTED_ASPEN_SAPLING = BLOCKS.registerBlock(
+    public static final DeferredBlock<FlowerPotBlock> POTTED_ASPEN_SAPLING = register(
             "potted_aspen_sapling",
-            (p) -> new FlowerPotBlock(ASPEN_SAPLING.get(), p),
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(Blocks.POTTED_OAK_SAPLING)
+            (properties) -> new FlowerPotBlock(ASPEN_SAPLING.get(), properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING)
                     .mapColor(MapColor.GRASS)
     );
 
-    public static final DeferredBlock<FlowerBlock> HONEYFLOWER = BLOCKS.registerBlock(
+    public static final DeferredBlock<FlowerBlock> HONEYFLOWER = register(
             "honeyflower",
-            (p) -> new FlowerBlock(MobEffects.HEALTH_BOOST, 10, p),
-            p -> BlockBehaviour.Properties
+            (properties) -> new FlowerBlock(MobEffects.HEALTH_BOOST, 10, properties),
+            () -> BlockBehaviour.Properties
                     .ofFullCopy(Blocks.POPPY)
     );
-    public static final DeferredItem<BlockItem> HONEYFLOWER_ITEM =
-            ITEMS.registerSimpleBlockItem("honeyflower", HONEYFLOWER);
 
-    public static final DeferredBlock<FlowerPotBlock> POTTED_HONEYFLOWER = BLOCKS.registerBlock(
+    public static final DeferredBlock<FlowerPotBlock> POTTED_HONEYFLOWER = register(
             "potted_honeyflower",
-            (p) -> new FlowerPotBlock(HONEYFLOWER.get(), p),
-            p -> BlockBehaviour.Properties
+            (properties) -> new FlowerPotBlock(HONEYFLOWER.get(), properties),
+            () -> BlockBehaviour.Properties
                     .ofFullCopy(Blocks.POTTED_POPPY)
     );
 
-    public static final DeferredBlock<AspenGroveMushroomBlock> ORANGE_MUSHROOM = BLOCKS.registerBlock(
+    public static final DeferredBlock<AspenGroveMushroomBlock> ORANGE_MUSHROOM = register(
             "orange_mushroom",
-            (p) -> new AspenGroveMushroomBlock(AspenGroveTreeGrowers.HUGE_ORANGE_MUSHROOM_SELECTOR, p),
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(Blocks.RED_MUSHROOM)
+            (properties) -> new AspenGroveMushroomBlock(AspenGroveTreeGrowers.HUGE_ORANGE_MUSHROOM_SELECTOR, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM)
                     .mapColor(MapColor.COLOR_ORANGE)
     );
-    public static final DeferredItem<BlockItem> ORANGE_MUSHROOM_ITEM =
-            ITEMS.registerSimpleBlockItem("orange_mushroom", ORANGE_MUSHROOM);
 
-    public static final DeferredBlock<FlowerPotBlock> POTTED_ORANGE_MUSHROOM = BLOCKS.registerBlock(
+    public static final DeferredBlock<FlowerPotBlock> POTTED_ORANGE_MUSHROOM = register(
             "potted_orange_mushroom",
-            (p) -> new FlowerPotBlock(ORANGE_MUSHROOM.get(), p),
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(Blocks.POTTED_RED_MUSHROOM)
+            (properties) -> new FlowerPotBlock(ORANGE_MUSHROOM.get(), properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_RED_MUSHROOM)
                     .mapColor(MapColor.COLOR_ORANGE)
     );
 
-    public static final DeferredBlock<HugeMushroomBlock> ORANGE_MUSHROOM_BLOCK = BLOCKS.registerBlock(
+    public static final DeferredBlock<HugeMushroomBlock> ORANGE_MUSHROOM_BLOCK = register(
             "orange_mushroom_block",
             HugeMushroomBlock::new,
-            p -> BlockBehaviour.Properties
-                    .ofFullCopy(Blocks.RED_MUSHROOM_BLOCK)
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.RED_MUSHROOM_BLOCK)
                     .mapColor(MapColor.COLOR_ORANGE)
     );
-    public static final DeferredItem<BlockItem> ORANGE_MUSHROOM_BLOCK_ITEM =
-            ITEMS.registerSimpleBlockItem("orange_mushroom_block", ORANGE_MUSHROOM_BLOCK);
 
     public static void addToBlockEntityTypes() {
         try {
@@ -342,26 +298,55 @@ public class AspenGroveBlocks {
                     }
                 }
             }
-            if (targetField == null) return;
+            if (targetField == null) {
+                System.err.println("[AspenGrove] CRITICAL: Could not find Set<Block> field in BlockEntityType");
+                return;
+            }
             targetField.setAccessible(true);
+            Set<Block> signBlocks = (Set<Block>) targetField.get(BlockEntityTypes.SIGN);
+            boolean modified = false;
+            try {
+                modified = signBlocks.add(ASPEN_SIGN.get()) | signBlocks.add(ASPEN_WALL_SIGN.get());
+            } catch (UnsupportedOperationException e) {
 
-            updateBlockEntitySet(targetField, BlockEntityTypes.SIGN, ASPEN_SIGN.get(), ASPEN_WALL_SIGN.get());
-            updateBlockEntitySet(targetField, BlockEntityTypes.HANGING_SIGN, ASPEN_HANGING_SIGN.get(), ASPEN_WALL_HANGING_SIGN.get());
-            updateBlockEntitySet(targetField, BlockEntityTypes.SHELF, ASPEN_SHELF.get());
-
+                Set<Block> newSignBlocks = new java.util.HashSet<>(signBlocks);
+                newSignBlocks.add(ASPEN_SIGN.get());
+                newSignBlocks.add(ASPEN_WALL_SIGN.get());
+                targetField.set(BlockEntityTypes.SIGN, newSignBlocks);
+                modified = true;
+            }
+            if (modified) {
+                System.out.println("[AspenGrove] Successfully added signs to BlockEntityType.SIGN");
+            }
+            Set<Block> hangingSignBlocks = (Set<Block>) targetField.get(BlockEntityTypes.HANGING_SIGN);
+            modified = false;
+            try {
+                modified = hangingSignBlocks.add(ASPEN_HANGING_SIGN.get()) | hangingSignBlocks.add(ASPEN_WALL_HANGING_SIGN.get());
+            } catch (UnsupportedOperationException e) {
+                Set<Block> newHangingSignBlocks = new java.util.HashSet<>(hangingSignBlocks);
+                newHangingSignBlocks.add(ASPEN_HANGING_SIGN.get());
+                newHangingSignBlocks.add(ASPEN_WALL_HANGING_SIGN.get());
+                targetField.set(BlockEntityTypes.HANGING_SIGN, newHangingSignBlocks);
+                modified = true;
+            }
+            if (modified) {
+                System.out.println("[AspenGrove] Successfully added hanging signs to BlockEntityType.HANGING_SIGN");
+            }
+            Set<Block> shelfBlocks = (Set<Block>) targetField.get(BlockEntityTypes.SHELF);
+            modified = false;
+            try {
+                modified = shelfBlocks.add(ASPEN_SHELF.get());
+            } catch (UnsupportedOperationException e) {
+                Set<Block> newShelfBlocks = new java.util.HashSet<>(shelfBlocks);
+                newShelfBlocks.add(ASPEN_SHELF.get());
+                targetField.set(BlockEntityTypes.SHELF, newShelfBlocks);
+                modified = true;
+            }
+            if (modified) {
+                System.out.println("[AspenGrove] Successfully added shelves to BlockEntityType.SHELF");
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private static void updateBlockEntitySet(Field field, BlockEntityType<?> type, Block... blocks) throws IllegalAccessException {
-        Set<Block> set = (Set<Block>) field.get(type);
-        try {
-            Collections.addAll(set, blocks);
-        } catch (UnsupportedOperationException e) {
-            Set<Block> newSet = new java.util.HashSet<>(set);
-            Collections.addAll(newSet, blocks);
-            field.set(type, newSet);
         }
     }
 }
