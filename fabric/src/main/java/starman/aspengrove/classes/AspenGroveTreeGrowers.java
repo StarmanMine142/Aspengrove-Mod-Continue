@@ -17,7 +17,7 @@ public class AspenGroveTreeGrowers {
             ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(AspenGrove.MOD_ID, "aspen"));
 
     public static final TreeGrower ASPEN = new TreeGrower(
-            "azalea",
+            "aspen",
             WeightedList.of(AspenGroveTreeGrowers.ASPEN_SELECTOR),
             WeightedList.of(),
             WeightedList.of(),

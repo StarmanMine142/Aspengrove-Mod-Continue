@@ -1,50 +1,154 @@
 package starman.aspengrove.classes;
 
-import starman.aspengrove.AspenGrove;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.bus.api.*;
 
+import net.minecraft.world.item.*;
+
+@EventBusSubscriber
 public class AspenGroveCreativeTab {
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, AspenGrove.MOD_ID);
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ASPENGROVE_TAB =
-            CREATIVE_MODE_TABS.register("aspengrove", () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.aspengrove"))
-                    .icon(() -> new ItemStack(AspenGroveBlocks.ASPEN_LOG.get()))
-                    .displayItems((parameters, output) -> {
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_LOG.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_WOOD.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.STRIPPED_ASPEN_LOG.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.STRIPPED_ASPEN_WOOD.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_PLANKS.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_STAIRS.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_SLAB.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_FENCE.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_FENCE_GATE.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_DOOR.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_TRAPDOOR.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_PRESSURE_PLATE.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_BUTTON.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_SIGN_ITEM.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_HANGING_SIGN_ITEM.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_SHELF.get()));
-                        output.accept(new ItemStack(AspenGroveItems.ASPEN_BOAT.get()));
-                        output.accept(new ItemStack(AspenGroveItems.ASPEN_CHEST_BOAT.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_LEAVES.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ASPEN_SAPLING.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.HONEYFLOWER.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ORANGE_MUSHROOM.get()));
-                        output.accept(new ItemStack(AspenGroveBlocks.ORANGE_MUSHROOM_BLOCK.get()));
-                        output.accept(new ItemStack(AspenGroveItems.BOUQUET.get()));
-                    }).build());
+    @SubscribeEvent
+    public static void onBuildCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.insertAfter(
+                    Items.BIRCH_BUTTON.getDefaultInstance(),
+                    AspenGroveItems.ASPEN_LOG_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_LOG_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_WOOD_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_WOOD_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.STRIPPED_ASPEN_LOG_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.STRIPPED_ASPEN_LOG_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.STRIPPED_ASPEN_WOOD_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.STRIPPED_ASPEN_WOOD_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_PLANKS_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_PLANKS_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_STAIRS_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_STAIRS_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_SLAB_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_SLAB_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_FENCE_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_FENCE_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_FENCE_GATE_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_FENCE_GATE_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_DOOR_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_DOOR_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_TRAPDOOR_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_TRAPDOOR_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_PRESSURE_PLATE_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_PRESSURE_PLATE_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_BUTTON_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+        }
 
-    public static void init(IEventBus modEventBus) {
-        CREATIVE_MODE_TABS.register(modEventBus);
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.insertAfter(
+                    Items.BIRCH_LOG.getDefaultInstance(),
+                    AspenGroveItems.ASPEN_LOG_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    Items.BIRCH_LEAVES.getDefaultInstance(),
+                    AspenGroveItems.ASPEN_LEAVES_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    Items.RED_MUSHROOM_BLOCK.getDefaultInstance(),
+                    AspenGroveItems.ORANGE_MUSHROOM_BLOCK_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    Items.BIRCH_SAPLING.getDefaultInstance(),
+                    AspenGroveItems.ASPEN_SAPLING_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    Items.RED_MUSHROOM.getDefaultInstance(),
+                    AspenGroveItems.ORANGE_MUSHROOM_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    Items.POPPY.getDefaultInstance(),
+                    AspenGroveItems.HONEYFLOWER_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.insertAfter(
+                    Items.BIRCH_HANGING_SIGN.getDefaultInstance(),
+                    AspenGroveItems.ASPEN_SIGN_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_SIGN_ITEM.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_HANGING_SIGN_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    Items.BIRCH_SHELF.getDefaultInstance(),
+                    AspenGroveItems.ASPEN_SHELF_ITEM.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.insertAfter(
+                    Items.BONE_MEAL.getDefaultInstance(),
+                    AspenGroveItems.BOUQUET.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    Items.BIRCH_CHEST_BOAT.getDefaultInstance(),
+                    AspenGroveItems.ASPEN_BOAT.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                    AspenGroveItems.ASPEN_BOAT.get().getDefaultInstance(),
+                    AspenGroveItems.ASPEN_CHEST_BOAT.get().getDefaultInstance(),
+                    CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+        }
+    }
+
+    public static void initialize(IEventBus modEventBus) {
     }
 }

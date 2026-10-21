@@ -1,6 +1,9 @@
 package starman.aspengrove.classes;
 
-//import com.terraformersmc.biolith.api.biome.BiomePlacement;
+import starman.aspengrove.AspenGrove;
+
+import com.terraformersmc.biolith.api.biome.BiomePlacement;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.*;
 import net.minecraft.world.level.biome.*;
@@ -8,7 +11,7 @@ import net.minecraft.world.level.biome.*;
 public class AspenGroveBiomes {
     public static final ResourceKey<Biome> ASPEN_GROVE = ResourceKey.create(
             Registries.BIOME,
-            Identifier.fromNamespaceAndPath("aspengrove", "aspen_grove")
+            Identifier.fromNamespaceAndPath(AspenGrove.MOD_ID, "aspen_grove")
     );
 
     public static void initialize() {
@@ -22,6 +25,6 @@ public class AspenGroveBiomes {
                 0L
         );
 
-//        BiomePlacement.addOverworld(ASPEN_GROVE, aspenParameters);
+        BiomePlacement.addOverworld(ASPEN_GROVE, aspenParameters);
     }
 }

@@ -49,7 +49,7 @@ dependencies {
     implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 
-//    implementation "com.terraformersmc:biolith-fabric:${biolith_version}"
+    implementation "com.terraformersmc:biolith-fabric:${biolith_version}"
 
     implementation "maven.modrinth:AHiIR2bn:y2e1prX5"
 }

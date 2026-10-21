@@ -1,20 +1,16 @@
 package starman.aspengrove.classes;
 
 import starman.aspengrove.AspenGrove;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.vehicle.boat.Boat;
-import net.minecraft.world.entity.vehicle.boat.ChestBoat;
-import net.minecraft.world.item.Item;
+
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.*;
+
+import net.minecraft.core.Registry;
+import net.minecraft.world.item.Item;
+import net.minecraft.resources.*;
+import net.minecraft.world.entity.*;
+import net.minecraft.core.registries.*;
+import net.minecraft.world.entity.vehicle.boat.*;
 
 import java.util.function.Supplier;
 

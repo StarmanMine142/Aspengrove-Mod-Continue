@@ -2,7 +2,6 @@ package starman.aspengrove;
 
 import starman.aspengrove.classes.*;
 
-
 import org.slf4j.*;
 
 import net.fabricmc.api.ModInitializer;

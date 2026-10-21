@@ -2,15 +2,14 @@ package starman.aspengrove;
 
 import starman.aspengrove.classes.*;
 import starman.aspengrove.classes.client.AspenGroveClient;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FireBlock;
+
+import org.slf4j.*;
+
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Mod(AspenGrove.MOD_ID)
 public class AspenGrove {
@@ -19,9 +18,9 @@ public class AspenGrove {
 
     public AspenGrove(IEventBus modEventBus) {
         AspenGroveBlocks.initialize(modEventBus);
-        AspenGroveEntities.init(modEventBus);
+        AspenGroveEntities.initialize(modEventBus);
         AspenGroveItems.initialize(modEventBus);
-        AspenGroveCreativeTab.init(modEventBus);
+        AspenGroveCreativeTab.initialize(modEventBus);
         AspenGroveColors.initialize();
         AspenGroveWoodTypes.initialize();
         AspenGroveTreeGrowers.initialize();
@@ -35,24 +34,9 @@ public class AspenGrove {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            AspenGroveBiomes.registerBiomes();
-            registerFlammability();
+            AspenGroveBiomes.initialize();
             AspenGroveBlocks.addToBlockEntityTypes();
             LOGGER.info("Aspen Grove Initialized!");
         });
-    }
-
-    private void registerFlammability() {
-        FireBlock fire = (FireBlock) Blocks.FIRE;
-        fire.setFlammable(AspenGroveBlocks.ASPEN_LOG.get(), 5, 5);
-        fire.setFlammable(AspenGroveBlocks.ASPEN_WOOD.get(), 5, 5);
-        fire.setFlammable(AspenGroveBlocks.STRIPPED_ASPEN_LOG.get(), 5, 5);
-        fire.setFlammable(AspenGroveBlocks.STRIPPED_ASPEN_WOOD.get(), 5, 5);
-        fire.setFlammable(AspenGroveBlocks.ASPEN_PLANKS.get(), 5, 20);
-        fire.setFlammable(AspenGroveBlocks.ASPEN_STAIRS.get(), 5, 20);
-        fire.setFlammable(AspenGroveBlocks.ASPEN_SLAB.get(), 5, 20);
-        fire.setFlammable(AspenGroveBlocks.ASPEN_FENCE.get(), 5, 20);
-        fire.setFlammable(AspenGroveBlocks.ASPEN_FENCE_GATE.get(), 5, 20);
-        fire.setFlammable(AspenGroveBlocks.ASPEN_LEAVES.get(), 30, 60);
     }
 }

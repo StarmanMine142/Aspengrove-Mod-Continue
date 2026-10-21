@@ -1,5 +1,6 @@
 package starman.aspengrove.classes.client;
 
+import starman.aspengrove.AspenGrove;
 import starman.aspengrove.classes.*;
 
 import java.util.List;
@@ -16,13 +17,12 @@ import net.minecraft.resources.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class AspenGroveClient implements ClientModInitializer {
-    public static final String MOD_ID = "aspengrove";
 
     public static final ModelLayerLocation ASPEN_BOAT = register("boat/aspen");
     public static final ModelLayerLocation ASPEN_CHEST_BOAT = register("chest_boat/aspen");
 
     private static ModelLayerLocation register(String name) {
-        return new ModelLayerLocation(Identifier.fromNamespaceAndPath(MOD_ID, name), "main");
+        return new ModelLayerLocation(Identifier.fromNamespaceAndPath(AspenGrove.MOD_ID, name), "main");
     }
 
     @Override

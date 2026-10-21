@@ -28,6 +28,7 @@
 		"fabricloader": ">=${min_fabric_loader_version}",
 		"minecraft": "~${min_minecraft_version}",
 		"java": ">=${java_version}",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"biolith": "*"
 	}
 }

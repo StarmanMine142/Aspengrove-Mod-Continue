@@ -1,0 +1,45 @@
+{
+  "replace": false,
+  "values": {
+    "aspengrove:aspen_log": {
+      "burn_odds": 5,
+      "ignite_odds": 5
+    },
+    "aspengrove:aspen_wood": {
+      "burn_odds": 5,
+      "ignite_odds": 5
+    },
+    "aspengrove:stripped_aspen_log": {
+      "burn_odds": 5,
+      "ignite_odds": 5
+    },
+    "aspengrove:stripped_aspen_wood": {
+      "burn_odds": 5,
+      "ignite_odds": 5
+    },
+    "aspengrove:aspen_planks": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "aspengrove:aspen_stairs": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "aspengrove:aspen_slab": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "aspengrove:aspen_fence": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "aspengrove:aspen_fence_gate": {
+      "burn_odds": 20,
+      "ignite_odds": 5
+    },
+    "aspengrove:aspen_leaves": {
+      "burn_odds": 60,
+      "ignite_odds": 30
+    }
+  }
+}
