@@ -54,7 +54,7 @@ public class AspenGroveEntities {
         return (type, world) -> new ChestBoat(type, world, droppedItem);
     }
 
-    public static void init(IEventBus bus) {
+    public static void initialize(IEventBus bus) {
         ENTITIES.register(bus);
     }
 }
